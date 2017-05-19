@@ -25,7 +25,7 @@ Each state has it's own file based on it's name/url.
 
 In Route class you can easily add an state to your website, here's an example:
 
-```
+```php
 Route::add("home", "/");
 Route::add("sample", "/sample", "Sample Page - ");
 Route::add("alert", "/alert", "Alert Page - ");
@@ -60,7 +60,7 @@ At the bottom, we have the footer section where scripts are loaded, the authenti
 
 To add extra content for a certail page, for example `sample.php` file you can do:
 
-```
+```html
 <?php $base->extra = "<script>console.debug('</> Hello, I am an extra script from sample!')</script>"; ?>
 ```
 
@@ -70,13 +70,13 @@ This additional footer content, will render after all the scripts.
 
 If you set a value for the `$_SESSION["alert"]` variable, an alert will show up when rendering `base.php`, for example:
 
-```
+```php
 Amir::setAlert("<b>Hey</b>, I'm an alert", "danger");
 ```
 
 You can also show an alert via JS:
 
-```
+```php
 Amir.Alert.show("This is a warning alert!", "warning");
 ```
 
@@ -95,13 +95,13 @@ On database error, you can show a custom message or redirect to another page.
 
 It's not a good idea to show the primary key `id` from the database to html that users can see, you need to turn that `id` into an Alpha ID and use it that way, example:
 
-```
+```php
 $user["id"] = Amir::aId($row["id"]) // Turn 1 into a
 ```
 
 If you want to use the Alpha ID later:
 
-```
+```php
 $id = Amir::aId($_POST["id"], true); // Turn a into 1
 ```
 
@@ -111,7 +111,7 @@ Note that the second parameter is `true` which will reverse the situation.
 
 To work with authentication of Amir PHP, just set the keys you'd like to use in the `Amir` class, for example:
 
-```
+```php
 class Amir {
 
     public static $authenticationKeys = [
@@ -126,7 +126,7 @@ Note that the second value is the default value of that key.
 
 To authenticate the user, you must set all the values into the `$_SESSION["auth"]` array, for example:
 
-```
+```php
 $_SESSION["auth"] = [
     "isAuthenticated" => true,
     "id" => $row["id"],
@@ -137,7 +137,7 @@ $_SESSION["auth"] = [
 
 And after a page reload, user will be authenticated, to check user's authentication:
 
-```
+```php
 if ($auth["isAuthenticated"]) {
     // User is logged in do stuff here
 } else {
@@ -154,7 +154,7 @@ You can change the authentication implementation in the `include/authenticate.ph
 
 You can use the session code just like a `CSRF` token, here's an example:
 
-```
+```html
 <input type="hidden" name="token" value="<?=Amir::generateSessionCode('code_login')?>">
 ```
 
@@ -166,7 +166,7 @@ Some useful and common functions can be found in the `Amir` class, some of them 
 
 You can see them all in the `include/amir.php` or `Amir` class, for example:
 
-```
+```php
 Amir::h(); // Htmlify
 Amir::c(); // Clean
 Amir::s(); // Slugify
@@ -212,7 +212,7 @@ If you work with ajax too, create a folder for all your form files like `form/`.
 
 For example, you want to login via ajax, create a file at `form/account/login.php`:
 
-```
+```php
 // Load all requirements
 require "../../include/requirements.php";
 
@@ -226,7 +226,7 @@ $username = $_POST["username"];
 
 Here's the `/include/requirements.php`:
 
-```
+```php
 require "../../include/amir.php";
 require "../../include/db.php";
 require "../../include/authenticate.php";
