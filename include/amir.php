@@ -155,8 +155,7 @@ class Amir {
     }
 
     // Make a url post
-    public static function post($url, $fields) {
-        $fields = $fields . "&password=kAs6uBUye2r7xAre26UwakUsUzUJ88rE" . "&root=" . "http://gta.kloud51.com/";
+    public static function post($url, $fields) 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 1);
