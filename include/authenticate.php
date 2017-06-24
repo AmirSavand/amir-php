@@ -4,7 +4,7 @@
 $auth = [];
 
 // Store all authentication keys with default values
-foreach (Amir::$authenticationKeys as $key) {
+foreach (Amir::$auth_keys as $key) {
     $auth[$key[0]] = $key[1];
 }
 

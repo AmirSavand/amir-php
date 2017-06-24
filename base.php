@@ -42,7 +42,7 @@ require "include/route.php";
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="http://github.com/amirm3hdi/amir-php" target="_blank">Github</a></li>
+                    <li><a href="http://github.com/AmirSavand/amir-php" target="_blank">GitHub</a></li>
                 </ul>
             </div>
         </div>
@@ -80,7 +80,7 @@ require "include/route.php";
 
 <?php
 // Clear alert
-Amir::clearAlert();
+Amir::clear_alert();
 
 // Close connection
 mysqli_close($sql);

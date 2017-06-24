@@ -71,7 +71,7 @@ This additional footer content, will render after all the scripts.
 If you set a value for the `$_SESSION["alert"]` variable, an alert will show up when rendering `base.php`, for example:
 
 ```php
-Amir::setAlert("<b>Hey</b>, I'm an alert", "danger");
+Amir::set_alert("<b>Hey</b>, I'm an alert", "danger");
 ```
 
 You can also show an alert via JS:
@@ -96,13 +96,13 @@ On database error, you can show a custom message or redirect to another page.
 It's not a good idea to show the primary key `id` from the database to html that users can see, you need to turn that `id` into an Alpha ID and use it that way, example:
 
 ```php
-$user["id"] = Amir::aId($row["id"]) // Turn 1 into a
+$user["id"] = Amir::a_id($row["id"]) // Turn 1 into a
 ```
 
 If you want to use the Alpha ID later:
 
 ```php
-$id = Amir::aId($_POST["id"], true); // Turn a into 1
+$id = Amir::a_id($_POST["id"], true); // Turn a into 1
 ```
 
 Note that the second parameter is `true` which will reverse the situation.
@@ -114,7 +114,7 @@ To work with authentication of Amir PHP, just set the keys you'd like to use in 
 ```php
 class Amir {
 
-    public static $authenticationKeys = [
+    public static $auth_keys = [
         ["isAuthenticated", false], ["id", 0], ["username", null], ["email", null]
     ];
 
@@ -155,7 +155,7 @@ You can change the authentication implementation in the `include/authenticate.ph
 You can use the session code just like a `CSRF` token, here's an example:
 
 ```html
-<input type="hidden" name="token" value="<?=Amir::generateSessionCode('code_login')?>">
+<input type="hidden" name="token" value="<?=Amir::generate_session_code('code_login')?>">
 ```
 
 And when trying to log the user in, just include the `include/validatecode.php` to validate the session code.
@@ -172,8 +172,8 @@ Amir::c(); // Clean
 Amir::s(); // Slugify
 Amir::ds();  // Deslugify
 Amir::secure(); // Escape string
-Amir::getTimeSince(); // Turn date into time since. (ex: "5 min(s) ago")
-Amir::isAjax(); // True if request is ajax-like
+Amir::get_time_since(); // Turn date into time since. (ex: "5 min(s) ago")
+Amir::is_ajax(); // True if request is ajax-like
 ...
 ```
 

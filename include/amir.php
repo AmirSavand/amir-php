@@ -11,7 +11,7 @@ session_start();
 class Amir {
 
     // All authentication keys
-    public static $authenticationKeys = [
+    public static $auth_keys = [
         ["isAuthenticated", false], ["id", 0], ["username", null], ["email", null],
     ];
 
@@ -41,14 +41,14 @@ class Amir {
     }
 
     // Generate session code to use for forms
-    public static function generateSessionCode($name) {
+    public static function generate_session_code($name) {
         $code = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
         $_SESSION["code"][$name] = $code;
         return $code;
     }
 
     // Check if it's a valid session code
-    public static function isValidSessionCode($name, $code) {
+    public static function is_valid_session_code($name, $code) {
         return hash_equals($_SESSION["code"][$name], $code) ? true : false;
     }
 
@@ -58,7 +58,7 @@ class Amir {
     }
 
     // Get time since via date
-    public static function getTimeSince($time) {
+    public static function get_time_since($time) {
 
         $dateTime = DateTime::CreateFromFormat("Y-m-d H:i:s", $time);
 
@@ -85,7 +85,7 @@ class Amir {
     }
 
     // If request is ajax-like
-    public static function isAjax() {
+    public static function is_ajax() {
         if (!isset($_SERVER['HTTP_X_REQUESTED_WITH']) OR
             !strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
             return false;
@@ -94,7 +94,7 @@ class Amir {
     }
 
     // Turn id into alpha id or reverse
-    public static function aId($in, $to_num = false, $pad_up = false, $pass_key = null) {
+    public static function a_id($in, $to_num = false, $pad_up = false, $pass_key = null) {
         $out = '';
         $index = 'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $base = strlen($index);
@@ -155,7 +155,7 @@ class Amir {
     }
 
     // Make a url post
-    public static function post($url, $fields) 
+    public static function post($url, $fields) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 1);
@@ -167,7 +167,7 @@ class Amir {
     }
 
     // Set alert
-    public static function setAlert($content, $type = "info") {
+    public static function set_alert($content, $type = "info") {
         $_SESSION["alert"] = [
             "content" => $content,
             "type" => $type,
@@ -183,7 +183,7 @@ class Amir {
     }
 
     // Reset alert
-    public static function clearAlert() {
+    public static function clear_alert() {
         $_SESSION["alert"] = null;
     }
 }
