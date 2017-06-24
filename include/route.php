@@ -35,7 +35,7 @@ class Route {
         $this->label = ucwords($name);
     }
 
-    public static function currentPath() {
+    public static function current_path() {
         // Get routing path
         $path = explode("/", $_SERVER["REQUEST_URI"]);
         array_shift($path);
@@ -74,7 +74,7 @@ $base = Route::find("home");
 
 // Check current route to use in base and pages
 foreach (Route::all() as $route) {
-    if (Route::currentPath()[0] === $route->name) {
+    if (Route::current_path()[0] === $route->name) {
         $base = $route;
         break;
     }
